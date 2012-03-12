@@ -1,0 +1,60 @@
+<div class="line">
+  <%= f.label :name %>
+  <%= f.text_field:name %>
+</div>
+
+<div class="line">
+  <%= f.label :email %>
+  <div class="hint">e.g. myname@example.com</div>
+  <%= f.text_field :email %>
+</div>
+
+<div class="line">
+  <%= f.label :password, "Choose a password" %>
+  <div class="hint">(Leave blank if you don't want to change it)</div>
+  <%= f.password_field :password %>
+</div>
+  
+<div class="line">
+  <%= f.label :password_confirmation, "Re-enter password" %>
+  <%= f.password_field :password_confirmation %>
+</div>
+
+<div class="checkbox line">
+  <%= f.check_box :blog_subscription %> <%= f.label :blog_subscription, "Email new blog entries" %>
+</div>
+
+<% if user_is_internal? %>
+<div class="checkbox line">
+  <%= f.check_box :weekly_subscription %> <%= f.label :weekly_subscription, "Email the weekly newsletter" %>
+</div>
+<% end %>
+<% if user_is_admin? %>
+  <div class="checkbox line">
+    <%= f.check_box :admin %> <%= f.label :admin %>
+  </div>
+
+  <div class="checkbox line">
+    <%= f.check_box :can_score %> <%= f.label :can_score %>
+  </div>
+
+  <div class="checkbox line">
+    <%= f.check_box :force_internal %> <%= f.label :force_internal %>
+  </div>
+
+
+  <div class="line">
+    <%= f.label :consumer_key %> <%= f.text_field :consumer_key %>
+  </div>
+  <div class="line">
+    <%= f.label :consumer_secret %> <%= f.text_field :consumer_secret %>
+  </div>
+  <div class="line">
+    <%= f.label :oauth_token %> <%= f.text_field :oauth_token %>
+  </div>
+  <div class="line">
+    <%= f.label :oauth_token_secret %> <%= f.text_field :oauth_token_secret %>
+  </div>
+
+
+<% end %>

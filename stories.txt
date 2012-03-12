@@ -1,0 +1,11 @@
+as a user, I want to edit a page
+
+as an anonymous user, I want to see a page and follow links
+
+as an admin, I want to manage users, so I can give people access
+
+as a user, I want to request access, so I can edit the site
+
+as a user, I want to be able to use dropbox to manage files
+
+as a user, I want to upload files

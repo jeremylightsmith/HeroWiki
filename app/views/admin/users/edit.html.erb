@@ -1,0 +1,13 @@
+<% page :title => "Edit User", :class => "form" %>
+
+<h2>Edit User Information</h2>
+
+<%= form_for [:admin, @user] do |f| %>
+  <%= render_errors @user %>
+  
+  <%= render :partial => "fields", :locals => {:f => f, :user => @user} %>
+  
+  <p><%= submit_tag "Update" %></p>
+<% end %>
+
+<%= link_to "back to users", admin_users_path %>

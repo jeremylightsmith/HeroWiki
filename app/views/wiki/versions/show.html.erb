@@ -1,0 +1,13 @@
+<% page :title => "#{@page.name} Version #{@version.version}" %>
+
+<p>
+  <%= link_to "Back to versions", wiki_versions_path(@page) %> |
+  <%= link_to_if @version.version > 0, "Previous version", wiki_version_path(@page, @version.version - 1) %> |
+  <%= link_to_if @version.version < @page.version, "Next version", wiki_version_path(@page, @version.version + 1) %>
+</p>
+
+<h2>Author</h2>
+<p><%= @version.author.name if @version.author %></p>
+
+<h2>Body</h2>
+<span class="value"><%= simple_format @version.body %></span>

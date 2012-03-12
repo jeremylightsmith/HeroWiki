@@ -1,0 +1,12 @@
+<% page title:'Pages', subtitle:link_to("[add page]", new_wiki_path) %>
+
+<ul>
+  <% @pages.each do |page| %>
+    <li>
+      <%= link_to page.name, wiki_path(page) %> 
+      <% if can_edit? %>
+        <span class="hint"><%= available_page_actions(page) %></span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

@@ -1,0 +1,20 @@
+<%= f.hidden_field :version %>
+
+<div>
+  <%= f.label :name %>
+  <%= f.text_field :name, tabindex:1, class:"span12" %>
+</div>
+
+<div>
+  <%= f.label :body %>
+  <%= f.text_area :body, tabindex:2, rows:20, class:"span12" %>
+</div>
+
+<div>
+  <%= f.label :page_class, "CSS Class" %>
+  <%= f.text_field :page_class, class:"span12", class:"span12" %>
+</div>
+
+<div class="form-actions">
+  <%= f.submit "Save", disable_with:'Saving...', tabindex:3, class:"btn btn-primary" %>
+</div>
