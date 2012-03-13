@@ -9,7 +9,7 @@ gem "omniauth-openid"
 #gem "omniauth-google"
 
 gem 'jquery-rails'
-gem 'less-rails-bootstrap'
+#gem 'less-rails-bootstrap'
 gem 'dropbox-sdk', :require => 'dropbox_sdk'
 gem 'RedCloth', '>= 4.2.9'
 gem "will_paginate", "~> 3.0.pre2"

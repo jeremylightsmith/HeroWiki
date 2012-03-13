@@ -1,7 +1,7 @@
 class WikiController < ApplicationController
   #before_filter :authenticate_user!, :internal_required, :except => [:show]
   before_filter :load_page, :except => [:show, :new, :index, :create, :home]
-  before_filter :forget_all_html, :only => [:create, :destroy]
+  before_filter :forget_all_html, :only => [:create, :destroy, :update]
   
   protect_from_forgery :except => [:preview]
   
@@ -40,12 +40,6 @@ class WikiController < ApplicationController
   end
   
   def update
-    if params[:page][:name] != @page.name
-      forget_all_html 
-    else
-      Rails.cache.delete("/wiki/#{@page.url}")
-    end
-
     if @page.update_attributes(params[:page].merge(:author => current_user))
       redirect_to(wiki_path(@page))
     else

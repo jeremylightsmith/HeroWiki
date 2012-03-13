@@ -1,13 +1,19 @@
 <% page title:'Pages' %>
-<% subtitle link_to("[add page]", new_wiki_path) if can_edit? %>
+<% subtitle link_to("Add Page", new_wiki_path) if can_edit? %>
 
-<ul>
+<table class="table">
   <% @pages.each do |page| %>
-    <li>
-      <%= link_to page.name, wiki_path(page) %> 
-      <% if can_edit? %>
-        <span class="hint"><%= available_page_actions(page) %></span>
-      <% end %>
-    </li>
+    <tr>
+      <td>
+        <%= link_to page.name, wiki_path(page) %> 
+      </td>
+      <td>
+        <% if can_edit? %>
+          <%= button_to("Edit", edit_wiki_path(page), icon:"pencil") %>
+          <%= button_to("Delete", wiki_path(page), method:"delete", confirm:"Are you sure you want to delete this page?", icon:"remove") %>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
-</ul>
+</table>
+

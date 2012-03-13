@@ -12,22 +12,29 @@
   <div class="navbar-inner">
     <div class="container">
       <a class="brand" href="/">HSD</a>
-      <ul class="nav">
-        <%= nav_link "Home", "/" %>
-        <%= nav_link "Pages", "/wiki" %>
-        <%= nav_link "New Page", "/wiki/new" if can_edit? %>
-        <%= nav_link "About", "/about" %>
-        <%= nav_link "All Users", admin_users_path if can_admin? %>
-      </ul>
-      <ul class="nav pull-right">
-        <% if current_user %>
-          <%= nav_link gravatar_for(current_user, size:30) + " " + current_user.name, 
-                       current_user.url %>
-          <%= nav_link "Sign Out", sign_out_path %>
-        <% else %>
-          <%= nav_link "Sign In", sign_in_path %>
-        <% end %>
-      </ul>
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <%= nav_link "Home", "/" %>
+          <%= nav_link "Pages", "/wiki" %>
+          <%= nav_link "About", "/about" %>
+          <%= nav_link "Tags", tags_path if can_edit? %>
+          <%= nav_link "Users", admin_users_path if can_admin? %>
+        </ul>
+        <ul class="nav pull-right">
+          <% if current_user %>
+            <%= nav_link gravatar_for(current_user, size:30) + " " + current_user.name, 
+                         current_user.url %>
+            <%= nav_link "Sign Out", sign_out_path %>
+          <% else %>
+            <%= nav_link "Sign In", sign_in_path %>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

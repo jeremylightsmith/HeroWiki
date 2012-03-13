@@ -27,4 +27,13 @@ module ApplicationHelper
     
     render :partial => "shared/errors", :object => record.errors, :locals => {:type => record.class}
   end
+
+  def button_to(name, url, options = {})
+    options[:class] = [options[:class], "btn"].compact.join(" ")
+    icon = if options[:icon]
+             "<i class='icon-#{options.delete(:icon)}'></i>"
+           end
+
+    link_to(raw([icon, name].compact.join(" ")), url, options)
+  end
 end

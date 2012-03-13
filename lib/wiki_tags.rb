@@ -3,7 +3,8 @@ module WikiTags
     tag_name = options[:text].strip
 
     pages = if tag_name.present?
-              Tag.find_by_name(tag_name).pages.order(:name)
+              tag = Tag.find_by_name(tag_name)
+              tag ? tag.pages.order(:name) : []
             else
               Page.order(:name)
             end

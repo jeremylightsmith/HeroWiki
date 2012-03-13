@@ -1,18 +1,16 @@
 <% page title:"Tags" %>
 
+<% subtitle link_to("Add Tag", new_tag_path, icon:"file") if can_edit? %>
+
 <table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Actions</th>
-  </tr>
   <% @tags.each do |tag| %>
     <tr>
       <td><%= link_to tag.name, tag %></td>
       <td>
-        <%= link_to "Edit Name", edit_tag_path(tag) %>
+        <%= button_to "Edit", edit_tag_path(tag), icon:"pencil" if can_edit? %>
         &nbsp;
         &nbsp;
-        <%= link_to "Delete Tag", tag, method:"delete", confirm:"Are you sure you want to delete this tag?" %>
+        <%= button_to "Delete", tag, icon:"remove", class:"btn", method:"delete", confirm:"Are you sure you want to delete this tag?" if can_edit? %>
       </td>
     </tr>
   <% end %>
