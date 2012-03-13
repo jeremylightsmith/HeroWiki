@@ -52,17 +52,17 @@ describe WikiController do
     end
     
     context "when an admin is NOT logged in" do
-      it "should show pages"# do
-        #get :show, :id => page.to_param
+      it "should show pages" do
+        get :show, :id => page.to_param
       
-        #response.should redirect_to("/users/sign_in")
-      #end
+        response.should be_success
+      end
       
-      it "should throw 404 if page & template doesn't exist"# do
-        #get :show, :id => "asdf"
+      it "should throw 404 if page & template doesn't exist" do
+        get :show, :id => "asdf"
       
-        #response.should redirect_to("/not_found")
-      #end
+        response.should render_template("/not_found")
+      end
     end
   end
   
