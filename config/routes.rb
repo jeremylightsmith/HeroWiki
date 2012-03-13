@@ -15,6 +15,10 @@ Hsd::Application.routes.draw do
     end
   end
 
+  get "sign_in", to:"sessions#new", as:"sign_in"
+  get "sign_out", to:"sessions#destroy", as:"sign_out"
+  match '/auth/:provider/callback', to:'sessions#create'
+  match '/auth/failure', to:'sessions#failure'
 
   match "/index.html" => redirect("/")
   get '/home' => redirect("/")

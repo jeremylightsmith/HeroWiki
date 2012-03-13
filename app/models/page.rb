@@ -5,7 +5,7 @@ class Page < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
   validates_uniqueness_of :url
-  belongs_to :sidebar, :class_name => "Page"
+  #belongs_to :sidebar, :class_name => "Page"
   belongs_to :author, :class_name => "User"
   
   before_save :save_version
@@ -18,7 +18,7 @@ class Page < ActiveRecord::Base
   
   def name=(value)
     self[:name] = value
-    self[:url] = value.gsub(/\W+/, '_').gsub(/(^_|_$)/, '').downcase
+    self[:url] = value.urlify
   end
   
   def current_version

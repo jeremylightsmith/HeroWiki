@@ -6,13 +6,13 @@ describe Admin::UsersController, "without logging in" do
     sign_in bob
     get :index
     
-    response.should render_template("must_be_admin")
+    response.should redirect_to("/")
   end
 
   it "should require login" do
     get :index
     
-    response.should redirect_to(new_user_session_path)
+    response.should redirect_to(sign_in_path)
   end
 end
 
@@ -34,29 +34,10 @@ describe Admin::UsersController do
     assigns(:users).should include(@jack)
   end
   
-  it "should create a user" do
-    get :create, :user => {:name => 'george', :email => 'george@jungle.com', :password => 'jungle', :password_confirmation => 'jungle'}
-    
-    assigns(:user).name.should == 'george'
-    assigns(:user).should be_valid_password("jungle")
-  end
-  
-  it "should update user, and not change pass" do
-    @bob.password = @bob.password_confirmation = "password"
-    @bob.save!
-    
-    get :update, :id => @bob.id, :user => {:name => 'george', :password => '', :password_confirmation => ''}
-    
-    @bob.reload.name.should == 'george'
-    @bob.should be_valid_password("password")
-  end
-  
   it "should update all user attributes" do
-    get :update, :id => @bob.id, :user => {:name => 'george', :password => 'jungle', :password_confirmation => 'jungle', :admin => true, :can_score => true}
+    get :update, :id => @bob.id, :user => {:name => 'george', :admin => true}
     
     @bob.reload.name.should == 'george'
-    @bob.should be_valid_password("jungle")
-    @bob.can_score?.should == true
     @bob.admin?.should == true
   end
   

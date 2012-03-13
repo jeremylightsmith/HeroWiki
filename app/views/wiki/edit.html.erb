@@ -1,9 +1,8 @@
-<% page :title => "Edit #{@page.name}",
-        :subtitle => link_to("see old versions", wiki_versions_path(@page)),
-        :class => "form edit-wiki-page" %>
+<% page title:"Edit #{@page.name}",
+        subtitle:link_to("see old versions", wiki_versions_path(@page)),
+        class:"form edit-wiki-page" %>
 
-<%= render "markitup" %>
         
-<%= form_for @page, :url => wiki_path(@page) do |f| %>
-  <%= render :partial => "form", :locals => {:f => f} %>
+<%= form_for @page, url:wiki_path(@page) do |f| %>
+  <%= render partial:"form", locals:{f:f} %>
 <% end %>

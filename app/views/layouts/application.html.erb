@@ -19,16 +19,29 @@
         <%= nav_link "About", "/about" %>
       </ul>
       <ul class="nav pull-right">
-        <%= nav_link "Sign In", "/sign_in" %>
+        <% if current_user %>
+          <%= nav_link gravatar_for(current_user, size:30) + " " + current_user.name, 
+                       current_user.url %>
+          <%= nav_link "Sign Out", sign_out_path %>
+        <% else %>
+          <%= nav_link "Sign In", sign_in_path %>
+        <% end %>
       </ul>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <div class="row">
+  <div class="header row">
     <div class="span12">
-      <h1><%= @page_title %></h1>
+      <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+      <% if alert %><div class="alert alert-error"><%= alert %></div><% end %>
+      <h1>
+        <%= @page_title %>
+      </h1>
+      <span class="subtitle">
+        <%= @page_subtitle %>
+      </span>
     </div>
   </div>
   <div class="row">

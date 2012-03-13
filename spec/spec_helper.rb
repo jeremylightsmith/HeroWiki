@@ -20,7 +20,7 @@ Spork.prefork do
       class ExampleGroup
         def self.as_editor
           before do
-            #sign_in create_admin!
+            sign_in create_editor!
           end
         end
       end

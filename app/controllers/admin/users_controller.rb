@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_filter :authenticate_user!, :admin_required
+  before_filter :require_admin!
   before_filter :load_user, :except => [:index, :new, :create]
   
   def index
@@ -8,15 +8,6 @@ class Admin::UsersController < ApplicationController
   
   def new
     @user = User.new
-  end
-  
-  def create
-    @user = User.new(params[:user])
-    if @user.save
-      redirect_to admin_users_path
-    else
-      render :action => 'new'
-    end
   end
   
   def show
@@ -31,11 +22,6 @@ class Admin::UsersController < ApplicationController
     else
       render :action => 'edit'
     end
-  end
-  
-  def confirm
-    @user.confirm!
-    redirect_to [:admin, :users]
   end
   
   def destroy

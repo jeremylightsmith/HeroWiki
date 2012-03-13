@@ -36,11 +36,11 @@ describe Page do
       @page.should have(1).error_on(:name)
     end
     
-    it "should create page w/ parent" do
-      @page.save!
-      p = Page.create!(:name => "alfred", :sidebar => @page)
-      p.reload.sidebar.should == @page
-    end
+    #it "should create page w/ parent" do
+      #@page.save!
+      #p = Page.create!(:name => "alfred", :sidebar => @page)
+      #p.reload.sidebar.should == @page
+    #end
   end
   
   describe "name=" do

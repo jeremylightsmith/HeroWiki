@@ -13,7 +13,7 @@ class WikiController < ApplicationController
       @page = Page.new(:name => params[:id].titleize)
       render :action => :new
     else
-      redirect_to :not_found
+      raise ActiveRecord::RecordNotFound
     end
   end
   

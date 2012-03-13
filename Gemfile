@@ -2,9 +2,14 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 
+gem "omniauth"
+gem "omniauth-openid"
+#gem "omniauth-twitter"
+#gem "omniauth-facebook"
+#gem "omniauth-google"
+
 gem 'jquery-rails'
 gem 'less-rails-bootstrap'
-gem "omniauth"
 gem 'dropbox-sdk', :require => 'dropbox_sdk'
 gem 'RedCloth', '>= 4.2.9'
 gem "will_paginate", "~> 3.0.pre2"
