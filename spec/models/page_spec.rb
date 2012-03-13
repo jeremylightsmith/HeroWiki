@@ -127,4 +127,18 @@ describe Page do
       proc { page.update_attributes! :author => @user, :body => "Goodbye", :version => 2 }.should raise_error(Page::WrongVersion, "This page has been edited since you loaded it (from version 1 -> 2), please copy your changes, refresh the page, and try applying them again")
     end
   end
+
+  describe "caching html" do
+    let(:page) { Page.create! name:"foo" }
+
+    it "should know about new / changed pages" do
+      page.body = "hello [you]"
+      page.save!
+      page.body_html.should include "missing"
+
+      Page.create! name:"you"
+      new_page = Page.find(page.id)
+      new_page.body_html.should_not include "missing"
+    end
+  end
 end

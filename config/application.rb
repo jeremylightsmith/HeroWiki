@@ -69,3 +69,5 @@ class String
     self.gsub(/\W+/, '_').gsub(/(^_|_$)/, '').downcase
   end
 end
+      
+require 'wiki_links_extension'

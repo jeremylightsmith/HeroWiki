@@ -27,9 +27,12 @@ class Page < ActiveRecord::Base
   
   def body=(value)
     @body = value
-    self[:body_html] = generate_html(value)
   end
-  
+
+  def body_html
+    generate_html(body)
+  end
+
   def body
     @body || (current_version ? current_version.body : "")
   end
@@ -71,15 +74,18 @@ class Page < ActiveRecord::Base
   protected
   
   def save_version
+    return unless @body || deleted_at_changed?
+
     version_number = current_version ? current_version.version : 0
     raise(WrongVersion, "This page has been edited since you loaded it (from version #{version_number} -> #{version}), please copy your changes, refresh the page, and try applying them again") unless version_number == version
 
     self.version += 1
     new_version = versions.build :body => @body, :author => @author, :version => version
     new_version.deletion = true if deleted?
+    @body = nil
   end
   
   def generate_html(markup)
-    RedCloth.new(markup).to_html
+    RedCloth.new(markup).to_html(:textile, :refs_wiki_links)
   end
 end

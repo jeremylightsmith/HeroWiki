@@ -1,6 +1,7 @@
 class WikiController < ApplicationController
   #before_filter :authenticate_user!, :internal_required, :except => [:show]
   before_filter :load_page, :except => [:show, :new, :index, :create, :home]
+  before_filter :forget_all_html, :only => [:create, :destroy]
   
   protect_from_forgery :except => [:preview]
   
@@ -8,6 +9,7 @@ class WikiController < ApplicationController
     @page = Page.find_by_param(params[:id])
     
     if @page
+      @html = html_for_page(@page)
       render
     elsif can_edit?
       @page = Page.new(:name => params[:id].titleize)
@@ -38,6 +40,8 @@ class WikiController < ApplicationController
   end
   
   def update
+    forget_all_html if params[:page][:name] != @page.name
+
     if @page.update_attributes(params[:page].merge(:author => current_user))
       redirect_to(wiki_path(@page))
     else
@@ -56,9 +60,20 @@ class WikiController < ApplicationController
 
   def home
     @page = Page.find_by_name("Home") || redirect_to("/wiki/home")
+    @html = html_for_page(@page)
   end
   
   protected 
+  
+  def forget_all_html
+    Rails.cache.clear
+  end
+
+  def html_for_page(page)
+    Rails.cache.fetch("/wiki/#{page.url}") do
+      page.body_html
+    end
+  end
   
   def load_page
     @page = Page.find_by_param(params[:id]) || raise(ActiveRecord::RecordNotFound)

@@ -32,7 +32,7 @@ describe WikiController do
       as_editor
     
       it "should display a page by url" do
-        page.update_attribute(:body_html, "foo bar html")
+        page.update_attribute(:body, "foo bar html")
 
         get :show, :id => page.to_param
       
