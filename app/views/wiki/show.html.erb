@@ -2,7 +2,7 @@
 
 <% subtitle raw [tags_for_page(@page), available_page_actions(@page)].compact.join(" ") %>
 
-<%= image_tag @page.thumbnail.url(:medium), class:"page-thumbnail" if @page.thumbnail? %>
+<%= image_tag @page.thumbnail.url(:medium), class:"span3 page-thumbnail" if @page.thumbnail? %>
 
 <div class="page-content">
 <%= raw @html %>
