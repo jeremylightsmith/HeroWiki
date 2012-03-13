@@ -1,32 +1,19 @@
 == IN PROGRESS
 
-as an editor, I want to login so that I know the site is safe
 
 
 
 == BACKLOG
 
 as a browser, I want to see a page and follow links
-
 as an editor, I want to see pictures for each pattern
-
 as an editor, I want to upload pictures
-
-
 as a browser, I want a list of the models
-
 as an editor, I want to leave a comment
-
-as an admin, I want to manage users, so I can give people access
-
 as an editor, I want to request access, so I can edit the site
-
 as an editor, I want to be able to use dropbox to manage files
-
 as an editor, I want to upload files
-
 as jeremy, I want everyone to be able to manage every change they might want, so that I don't have to
-
 as an editor, I want to login with something other than google / yahoo (hotmail / twitter / facebook?)
 
 
@@ -34,3 +21,5 @@ as an editor, I want to login with something other than google / yahoo (hotmail 
 == DONE
 
 as an editor, I want to edit a page
+as an editor, I want to login so that I know the site is safe
+as an admin, I want to manage users, so I can give people access

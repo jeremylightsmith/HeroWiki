@@ -15,6 +15,7 @@ gem 'RedCloth', '>= 4.2.9'
 gem "will_paginate", "~> 3.0.pre2"
 gem 'airbrake'
 gem "dalli"
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
