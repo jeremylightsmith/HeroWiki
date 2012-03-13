@@ -25,7 +25,7 @@ describe WikiLinksExtension do
     Page.create! name:"Apple"
     Page.create! name:"Banana"
 
-    redcloth = RedCloth.new("\npages. foo\n\n")
+    redcloth = RedCloth.new("pages. ")
     redcloth.extend(WikiTags)
     redcloth.to_html.should == <<-HTML.chomp
 <ul class='thumbnails'>
@@ -43,5 +43,18 @@ describe WikiLinksExtension do
   </li>
 </ul>
     HTML
+  end
+  
+  it "should only show pages for given tag" do
+    apple, banana, lemon = %w(apple banana lemon).map{|n| Page.create! name:n}
+    tag = Tag.create! name:"breakfast"
+    tag.pages << apple << banana
+
+    redcloth = RedCloth.new("pages. breakfast")
+    redcloth.extend(WikiTags)
+    html = redcloth.to_html
+    html.should include("apple")
+    html.should include("banana")
+    html.should_not include("lemon")
   end
 end
