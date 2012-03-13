@@ -21,4 +21,27 @@ describe WikiLinksExtension do
     HTML
   end
   
+  it "should show a wall of pages" do
+    Page.create! name:"Apple"
+    Page.create! name:"Banana"
+
+    redcloth = RedCloth.new("\npages. foo\n\n")
+    redcloth.extend(WikiTags)
+    redcloth.to_html.should == <<-HTML.chomp
+<ul class='thumbnails'>
+  <li class='span2'>
+    <a href='/apple' class='thumbnail'>
+      <img src=''/>
+      <h5>Apple</h5>
+    </a>
+  </li>
+  <li class='span2'>
+    <a href='/banana' class='thumbnail'>
+      <img src=''/>
+      <h5>Banana</h5>
+    </a>
+  </li>
+</ul>
+    HTML
+  end
 end

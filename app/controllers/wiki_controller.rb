@@ -40,7 +40,11 @@ class WikiController < ApplicationController
   end
   
   def update
-    forget_all_html if params[:page][:name] != @page.name
+    if params[:page][:name] != @page.name
+      forget_all_html 
+    else
+      Rails.cache.delete("/wiki/#{@page.url}")
+    end
 
     if @page.update_attributes(params[:page].merge(:author => current_user))
       redirect_to(wiki_path(@page))
@@ -54,8 +58,9 @@ class WikiController < ApplicationController
   end
   
   def destroy
-    @page.soft_delete! current_user
-    redirect_to(wiki_path)
+    @page.destroy
+    #@page.soft_delete! current_user
+    redirect_to("/wiki")
   end
 
   def home

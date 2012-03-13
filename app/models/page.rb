@@ -86,6 +86,10 @@ class Page < ActiveRecord::Base
   end
   
   def generate_html(markup)
-    RedCloth.new(markup).to_html(:textile, :refs_wiki_links)
+    return "" unless markup
+
+    redcloth = RedCloth.new(markup)
+    redcloth.extend(WikiTags)
+    redcloth.to_html(:textile, :refs_wiki_links)
   end
 end
