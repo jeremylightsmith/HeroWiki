@@ -7,6 +7,7 @@ class Page < ActiveRecord::Base
   validates_uniqueness_of :url
   #belongs_to :sidebar, :class_name => "Page"
   belongs_to :author, :class_name => "User"
+  has_and_belongs_to_many :tags, order:"name"
   
   before_save :save_version
   has_many :versions, :as => :versionable
@@ -20,7 +21,11 @@ class Page < ActiveRecord::Base
     self[:name] = value
     self[:url] = value.urlify
   end
-  
+
+  def tag_ids=(ids)
+    self.tags = Tag.find(ids.reject{|id| id.blank?})
+  end
+
   def current_version
     versions.last
   end

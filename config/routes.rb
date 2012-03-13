@@ -4,6 +4,8 @@ Hsd::Application.routes.draw do
   resources :wiki, :controller => "wiki" do
     resources :versions, :controller => "wiki/versions"
   end
+  resources :tags
+
   resources :files do
     get '*path', :action => 'show', :on => :collection
   end

@@ -1,6 +1,6 @@
-<% page title:@page.name, 
-        subtitle:available_page_actions(@page), 
-        class:@page.page_class %>
+<% page title:@page.name, class:@page.page_class %>
+
+<% subtitle raw [tags_for_page(@page), available_page_actions(@page)].compact.join(" ") %>
 
 <div class="page-content">
 <%= raw @html %>

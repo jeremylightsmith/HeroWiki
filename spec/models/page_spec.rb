@@ -12,6 +12,14 @@ describe Page do
     @page.save!
   end
 
+  it "should create a page with several tags" do
+    a, b = Tag.create!(name:"a"), Tag.create!(name:"b")
+
+    page = Page.create! name:"foo", tag_ids:["", a.id, b.id]
+
+    page.reload.tags.map(&:name).should == %w(a b)
+  end
+
   describe "validations" do
     it "should be valid w/ valid params" do
       @page.should be_valid

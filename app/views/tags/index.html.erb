@@ -1,0 +1,20 @@
+<% page title:"Tags" %>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  <% @tags.each do |tag| %>
+    <tr>
+      <td><%= link_to tag.name, tag %></td>
+      <td>
+        <%= link_to "Edit Name", edit_tag_path(tag) %>
+        &nbsp;
+        &nbsp;
+        <%= link_to "Delete Tag", tag, method:"delete", confirm:"Are you sure you want to delete this tag?" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+

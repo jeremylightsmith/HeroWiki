@@ -145,8 +145,9 @@ describe WikiController do
     it "should destroy" do
       delete :destroy, :id => page.to_param
       
-      response.should redirect_to(wiki_path)
-      page.reload.deleted_at.should_not be_nil
+      response.should redirect_to("/wiki")
+      Page.exists?(page).should == false
+      #page.reload.deleted_at.should_not be_nil
     end
   end
 end

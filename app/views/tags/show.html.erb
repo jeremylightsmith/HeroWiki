@@ -1,0 +1,4 @@
+<% page title:"#{@tag.name} Pages" %>
+<% subtitle link_to("Edit Tag", edit_tag_path(@tag)) if can_edit? %>
+
+<%= pages_for_tag(@tag) %>

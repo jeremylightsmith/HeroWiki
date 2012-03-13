@@ -1,6 +1,6 @@
 == IN PROGRESS
 
-as a browser, I want a list of the models
+as an editor, I want to be able to tag pages
 
 
 == BACKLOG
@@ -16,6 +16,7 @@ as an editor, I want to login with something other than google / yahoo (hotmail 
 
 == DONE
 
+as a browser, I want a list of the models
 as a browser, I want to see a page and follow links
 as an editor, I want to edit a page
 as an editor, I want to login so that I know the site is safe
