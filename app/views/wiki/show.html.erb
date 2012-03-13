@@ -1,6 +1,8 @@
-<% page title:@page.name, class:@page.page_class %>
+<% page title:@page.name, class:"wiki-page #{@page.page_class}" %>
 
 <% subtitle raw [tags_for_page(@page), available_page_actions(@page)].compact.join(" ") %>
+
+<%= image_tag @page.thumbnail.url(:medium), class:"page-thumbnail" if @page.thumbnail? %>
 
 <div class="page-content">
 <%= raw @html %>

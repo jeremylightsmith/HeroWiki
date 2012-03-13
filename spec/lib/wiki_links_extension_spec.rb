@@ -29,15 +29,13 @@ describe WikiLinksExtension do
     redcloth.extend(WikiTags)
     redcloth.to_html.should == <<-HTML.chomp
 <ul class='thumbnails'>
-  <li class='span2'>
+  <li class='span3'>
     <a href='/apple' class='thumbnail'>
-      <img src=''/>
       <h5>Apple</h5>
     </a>
   </li>
-  <li class='span2'>
+  <li class='span3'>
     <a href='/banana' class='thumbnail'>
-      <img src=''/>
       <h5>Banana</h5>
     </a>
   </li>

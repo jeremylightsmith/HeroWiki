@@ -16,6 +16,8 @@ gem "will_paginate", "~> 3.0.pre2"
 gem 'airbrake'
 gem "dalli"
 gem 'thin'
+gem "paperclip", "~> 2.3"
+gem 'aws-sdk'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

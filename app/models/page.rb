@@ -12,6 +12,17 @@ class Page < ActiveRecord::Base
   before_save :save_version
   has_many :versions, :as => :versionable
   
+  has_attached_file :thumbnail, 
+                    STORAGE_OPTIONS.merge(
+                      styles: {
+                        tiny:"160x120#",
+                        small:"260x180#",
+                        medium:"360x268#",
+                        large:"570x416#",
+                      }, 
+                      default_url:"/assets/missing_:style.png"
+                    )
+
   def initialize(*args)
     super
     @version = 0

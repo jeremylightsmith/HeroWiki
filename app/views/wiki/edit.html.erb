@@ -3,7 +3,7 @@
         class:"form edit-wiki-page" %>
 
         
-<%= form_for @page, url:wiki_path(@page) do |f| %>
+<%= form_for @page, url:wiki_path(@page), html:{multipart:true} do |f| %>
   <%= render_errors @page %>
   <%= render partial:"form", locals:{f:f} %>
 <% end %>
