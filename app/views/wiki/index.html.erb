@@ -2,10 +2,18 @@
 <% subtitle link_to("Add Page", new_wiki_path) if can_edit? %>
 
 <table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Tags</th>
+    <th></th>
+  </tr>
   <% @pages.each do |page| %>
     <tr>
       <td>
         <%= link_to page.name, wiki_path(page) %> 
+      </td>
+      <td>
+        <% page.tags.each do |tag| %><%= link_to tag.name, tag, class:"label label-info" %> <% end %>
       </td>
       <td>
         <% if can_edit? %>
