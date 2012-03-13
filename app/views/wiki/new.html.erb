@@ -1,5 +1,6 @@
 <% page title:"New Page" %>
 
 <%= form_for @page, url:"/wiki" do |f| %>
+  <%= render_errors @page %>
   <%= render partial:"form", locals:{f:f} %>
 <% end %>

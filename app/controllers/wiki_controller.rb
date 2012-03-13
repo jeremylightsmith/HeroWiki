@@ -29,13 +29,21 @@ class WikiController < ApplicationController
   end
   
   def create
-    @page = Page.create!(params[:page].merge(:author => current_user))
-    redirect_to(wiki_path(@page))
+    @page = Page.new(params[:page].merge(:author => current_user))
+    if @page.save
+      redirect_to(wiki_path(@page))
+    else
+      render :new
+    end
   end
   
   def update
-    @page.update_attributes!(params[:page].merge(:author => current_user))
-    redirect_to(wiki_path(@page))
+    if @page.update_attributes(params[:page].merge(:author => current_user))
+      redirect_to(wiki_path(@page))
+    else
+      render :edit
+    end
+
   rescue Page::WrongVersion
     flash.now[:alert] = "This page has been edited since you loaded it, please copy your changes, refresh it, and try applying them again"
     render :action => :edit 

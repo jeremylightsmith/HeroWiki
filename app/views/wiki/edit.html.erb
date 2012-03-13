@@ -4,5 +4,6 @@
 
         
 <%= form_for @page, url:wiki_path(@page) do |f| %>
+  <%= render_errors @page %>
   <%= render partial:"form", locals:{f:f} %>
 <% end %>
