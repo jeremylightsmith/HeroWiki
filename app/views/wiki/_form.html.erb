@@ -9,10 +9,14 @@
   <%= f.label :body %>
   <%= f.text_area :body, tabindex:2, rows:20, class:"span12" %>
 </div>
+<br/>
 
 <div>
-  <label>Tags</label>
-  <span class="help-text">Check any tags that apply to this page</span>
+  <label>
+    Tags
+    <span class="hint">Select the tags below that apply to this page</span>
+    <%= link_to "Manage Tags", tags_path %>
+  </label>
 
   <div class="controls tags">
     <% @page.tags.each do |tag| %>
@@ -23,15 +27,11 @@
     <% end %>
   </div>
 
-  <%= link_to "Manage Tags", tags_path %>
-
   <%= f.select :tag_ids, options_from_collection_for_select(Tag.all, :id, :name, @page.tags.map(&:id)), {}, multiple:true, size:6, style:"opacity:0;position:absolute;left:-400px;" %>
 </div>
+<br/>
 
-<div>
-  <%= f.label :page_class, "CSS Class" %>
-  <%= f.text_field :page_class, class:"span12", class:"span12" %>
-</div>
+
 
 <div class="form-actions">
   <%= f.submit "Save", disable_with:'Saving...', tabindex:3, class:"btn btn-primary" %>

@@ -1,11 +1,10 @@
 == IN PROGRESS
 
-as an editor, I want to be able to tag pages
+as a browser, I want to see a wall of pictures for the models
 
 
 == BACKLOG
 
-as a browser, I want to see a wall of pictures for the models
 as an editor, I want to upload pictures
 as an editor, I want to leave a comment
 as an editor, I want to request access, so I can edit the site
@@ -16,6 +15,7 @@ as an editor, I want to login with something other than google / yahoo (hotmail 
 
 == DONE
 
+as an editor, I want to be able to tag pages
 as a browser, I want a list of the models
 as a browser, I want to see a page and follow links
 as an editor, I want to edit a page
