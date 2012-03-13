@@ -17,6 +17,7 @@
         <%= nav_link "Pages", "/wiki" %>
         <%= nav_link "New Page", "/wiki/new" if can_edit? %>
         <%= nav_link "About", "/about" %>
+        <%= nav_link "All Users", admin_users_path if can_admin? %>
       </ul>
       <ul class="nav pull-right">
         <% if current_user %>

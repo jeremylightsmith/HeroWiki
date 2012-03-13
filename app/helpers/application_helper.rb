@@ -21,4 +21,10 @@ module ApplicationHelper
     options.delete :size
     image_tag url, options
   end
+
+  def render_errors(record)
+    return unless record.errors.any?
+    
+    render :partial => "shared/errors", :object => record.errors, :locals => {:type => record.class}
+  end
 end

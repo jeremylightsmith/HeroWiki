@@ -5,9 +5,7 @@
 <%= form_for [:admin, @user] do |f| %>
   <%= render_errors @user %>
   
-  <%= render :partial => "fields", :locals => {:f => f, :user => @user} %>
-  
-  <p><%= submit_tag "Update" %></p>
+  <%= render :partial => "fields", locals:{f:f, user:@user} %>
 <% end %>
 
 <%= link_to "back to users", admin_users_path %>

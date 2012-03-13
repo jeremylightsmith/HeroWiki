@@ -1,20 +1,13 @@
-<style type="text/css" media="screen">
-  td, th {
-    padding: 5px;
-  }
-</style>
+<% page title:"Users" %>
 
-<% page :title => "Users" %>
-
-<table class="simple" border="1" cellpadding="3" cellspacing="0">
+<table class="table">
   <tr>
-    <th>name</th>
-    <th>email</th>
-    <th>admin?</th>
-    <th>can score?</th>
-    <th>confirmed?</th>
-    <th>internal?</th>
-    <th>delete</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Provider</th>
+    <th>Editor?</th>
+    <th>Admin?</th>
+    <th></th>
   </tr>
   <% @users.each do |user| %>
     <tr>
@@ -22,22 +15,14 @@
     
       <td><%= link_to name, edit_admin_user_path(user) %></td>
       <td><%= user.email %></td>
+      <td><%= user.provider %></td>
+      <td><%= "X" if user.editor? %></td>
       <td><%= "X" if user.admin? %></td>
-      <td><%= "X" if user.can_score? %></td>
-      <td><%= user.confirmed? ? "confirmed" : link_to("confirm", confirm_admin_user_path(user), :method => :post) %></td>
-      <td><%= "X" if user.internal? %></td>
       <td>
-        <%= link_to "[x]", admin_user_path(user), :method => :delete,
-                    :confirm => "Are you sure you want to delete #{user.email}" %>
+        <%= link_to "[x]", admin_user_path(user), method:"delete",
+                    confirm:"Are you sure you want to delete #{name}" %>
       </td>
     </tr>
   <% end %>
 </table>
-<br>
-<h1>Weekly Newsletter Distribution</h1>
-  <p>
-<textarea cols=50 rows=5><%= subscriber_emails.join(";") %></textarea>
-</p>
-<br/>
-<br/>
-<%= link_to "create new user", new_admin_user_path %>
+
