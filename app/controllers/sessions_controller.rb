@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    puts auth_hash.to_yaml
     @user = User.find_or_create_from_auth_hash(auth_hash)
     self.current_user = @user
     redirect_to root_path
