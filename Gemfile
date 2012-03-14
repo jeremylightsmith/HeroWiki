@@ -18,6 +18,7 @@ gem "dalli"
 gem 'thin'
 gem "paperclip", "~> 2.3"
 gem 'aws-sdk'
+gem "differ"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -8,7 +8,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= @page_class %>">
 
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
@@ -26,6 +26,7 @@
           <%= nav_link "About", "/about" %>
           <%= nav_link "Tags", tags_path if can_edit? %>
           <%= nav_link "Users", admin_users_path if can_admin? %>
+          <%= nav_link "Changes", changes_path %>
         </ul>
         <ul class="nav pull-right">
           <% if current_user %>

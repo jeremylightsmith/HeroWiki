@@ -1,0 +1,14 @@
+<% page title:"Changes", class:"changes-page" %>
+
+
+<% @changes.each do |change| %>
+  <div class="change">
+    <div class="date pull-right"><%= time_ago_in_words(change.created_at) %> ago</div>
+    <h3><%= link_to change.versionable.name, wiki_path(change.versionable) if change.versionable %></h3>
+    <div class="author">by <%= change.author.name if change.author %></div>
+
+    <div class="diff"><%= raw change.diff.gsub("\n", "<br/>") %></div>
+  </div>
+<% end %>
+
+<%= will_paginate @changes, class:"apple_pagination" %>

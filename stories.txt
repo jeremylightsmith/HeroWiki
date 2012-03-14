@@ -1,6 +1,6 @@
 == IN PROGRESS
 
-as an editor, I want a textile reference so I know how to edit pages
+as royce, I want to track changes, so I can see what the community is doing!
 
 
 == BACKLOG
@@ -15,6 +15,7 @@ as an editor, I want to login with something other than google / yahoo (hotmail 
 
 == DONE
 
+as an editor, I want a textile reference so I know how to edit pages
 as an administrator, I want to invite people in batch, so that I can invite the whole HSD community (with a code over email?)
 as an hsd alum, I want to see all the hsd models & methods up there, so that I can be awesome
 as a mobile user, I want the phone to responsively shrink to my iphone size, so that I can be awesome on the go
