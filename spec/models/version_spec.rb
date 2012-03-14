@@ -16,8 +16,8 @@ describe Version do
     page.body = "Hello, Bob\nGood Bye"
     page.save!
 
-    page.versions.first.diff.should == {type:"New Page", body:"Hello, Bob\nGood Day"}
-    page.versions.last.diff.should == "{\"Good Day\" >> \"Good Bye\"}"
+    page.versions.first.diff.should == "<ins class=\"differ\">Hello, Bob\nGood Day</ins>"
+    page.versions.last.diff.should == "Hello, Bob\n<del class=\"differ\">Good Day</del><ins class=\"differ\">Good Bye</ins>"
   end
 
   it "should show diff for same" do
@@ -25,6 +25,6 @@ describe Version do
     page.save!
 
     page.versions.count.should == 2
-    page.versions.last.diff.should == "{\"Good Day\" >> \"Good Bye\"}"
+    page.versions.first.diff.should == "<ins class=\"differ\">Hello, Bob\nGood Day</ins>"
   end
 end

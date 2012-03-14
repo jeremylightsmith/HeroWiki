@@ -1,5 +1,5 @@
-class Wiki::VersionsController < ApplicationController
-  before_filter :authenticate_user!, :internal_required
+class Pages::VersionsController < ApplicationController
+  before_filter :require_editor!
   before_filter :load_page
   
   def index
@@ -13,6 +13,6 @@ class Wiki::VersionsController < ApplicationController
   protected
   
   def load_page
-    @page = Page.find_by_param(params[:wiki_id]) || raise(ActiveRecord::RecordNotFound)
+    @page = Page.find_by_param(params[:page_id]) || raise(ActiveRecord::RecordNotFound)
   end
 end

@@ -1,27 +1,27 @@
 require 'spec_helper'
 
-describe WikiController do  
+describe PagesController do  
   let(:page) {Page.create!(:name => "Foo Bar")}
 
   describe "routes" do
     it "should have default page path" do
-      {:get => "/wiki/about_us"}.should route_to(:controller => "wiki", :action => "show", :id => "about_us")
+      {:get => "/about_us"}.should route_to(:controller => "pages", :action => "show", :id => "about_us")
     end
   
     it "should have index page" do
-      {:get => "/wiki"}.should route_to(:controller => "wiki", :action => "index")
+      {:get => "/pages"}.should route_to(:controller => "pages", :action => "index")
     end
     
     it "should have create page" do
-      {:post => "/wiki"}.should route_to(:controller => "wiki", :action => "create")
+      {:post => "/pages"}.should route_to(:controller => "pages", :action => "create")
     end
     
     it "should have simple put page" do
-      {:put => "/wiki/about_us"}.should route_to(:controller => "wiki", :action => "update", :id => "about_us")
+      {:put => "/about_us"}.should route_to(:controller => "pages", :action => "update", :id => "about_us")
     end
     
     it "should have simple delete page" do
-      {:delete => "/wiki/about_us"}.should route_to(:controller => "wiki", :action => "destroy", :id => "about_us")
+      {:delete => "/about_us"}.should route_to(:controller => "pages", :action => "destroy", :id => "about_us")
     end
   end
   
@@ -115,7 +115,7 @@ describe WikiController do
       page.name.should == "foo"
       page.url.should == "foo"
       page.body.should == "crap"
-      response.should redirect_to(wiki_path(page))
+      response.should redirect_to(page_path(page))
     end
   end
   
@@ -125,7 +125,7 @@ describe WikiController do
     it "should update a page" do
       put :update, :id => page.to_param, :page => {:name => "foo", :body => "crap"}
       
-      response.should redirect_to(wiki_path(page.reload))
+      response.should redirect_to(page_path(page.reload))
       assigns(:page).should == page
       page.name.should == "foo"
       page.url.should == "foo"
@@ -145,7 +145,7 @@ describe WikiController do
     it "should destroy" do
       delete :destroy, :id => page.to_param
       
-      response.should redirect_to("/wiki")
+      response.should redirect_to("/pages")
       Page.exists?(page).should == false
       #page.reload.deleted_at.should_not be_nil
     end

@@ -1,8 +1,9 @@
 Hsd::Application.routes.draw do
-  root :to => "wiki#home"
+  root :to => "pages#home"
 
-  resources :wiki, :controller => "wiki" do
-    resources :versions, :controller => "wiki/versions"
+  resources :pages do
+    resources :versions, :controller => "pages/versions"
+    resources :attachments, :controller => "pages/attachments"
   end
   resources :tags
   resources :changes
@@ -11,7 +12,6 @@ Hsd::Application.routes.draw do
     get '*path', :action => 'show', :on => :collection
   end
   
-  #devise_for :users
   namespace :admin do
     resources :users do
       post :confirm, :on => :member
@@ -27,14 +27,7 @@ Hsd::Application.routes.draw do
   match "/index.html" => redirect("/")
   get '/home' => redirect("/")
   
-  #resources :dropbox, :controller => "dropsite/files" do
-    #get '*path/edit', :action => 'edit', :on => :collection
-    #get '*path', :action => 'show', :on => :collection
-  #end
-
-  # get 'application_form', :to => "static#application_form"  
-  
-  get    ':id' => 'wiki#show', :as => :page
-  put    ':id' => 'wiki#update'
-  delete ':id' => 'wiki#destroy'
+  get    ':id' => 'pages#show', :as => :page
+  put    ':id' => 'pages#update'
+  delete ':id' => 'pages#destroy'
 end

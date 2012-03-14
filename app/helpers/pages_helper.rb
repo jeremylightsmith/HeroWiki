@@ -1,12 +1,8 @@
-module WikiHelper
-  def wiki_path(page)
-    "/#{page.url}"
-  end
-
+module PagesHelper
   def available_page_actions(page)
     return nil unless can_edit?
     
-    raw link_to("Edit", edit_wiki_path(page))
+    raw link_to("Edit", edit_page_path(page))
   end
 
   def tag_selector(tag, selected)

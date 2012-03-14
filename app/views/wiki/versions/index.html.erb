@@ -1,7 +1,0 @@
-<% page :title => "#{@page.name} Versions" %>
-
-<ul>
-  <% @versions.each do |version| %>
-    <li><%= link_to "Version #{version.version} by #{version.author.name if version.author}", wiki_version_path(@page, version) %></li>
-  <% end %>
-</ul>

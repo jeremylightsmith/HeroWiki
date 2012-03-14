@@ -12,7 +12,7 @@ module WikiLinksExtension
       if url = page_url_for_name(name)
         "<a href='/#{url}' class='wiki-link'>[#{name}]</a>"
       else
-        "<a href='/wiki/new?page[name]=#{name}' class='missing-wiki-link'>[#{name}?]</a>"
+        "<a href='/pages/new?page[name]=#{name}' class='missing-wiki-link'>[#{name}?]</a>"
       end
     end
   end

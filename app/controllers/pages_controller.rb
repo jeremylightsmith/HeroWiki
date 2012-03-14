@@ -1,5 +1,5 @@
-class WikiController < ApplicationController
-  #before_filter :authenticate_user!, :internal_required, :except => [:show]
+class PagesController < ApplicationController
+  before_filter :require_editor!, :except => [:show, :index]
   before_filter :load_page, :except => [:show, :new, :index, :create, :home]
   before_filter :forget_all_html, :only => [:create, :destroy, :update]
   
@@ -33,7 +33,7 @@ class WikiController < ApplicationController
   def create
     @page = Page.new(params[:page].merge(:author => current_user))
     if @page.save
-      redirect_to(wiki_path(@page))
+      redirect_to(page_path(@page))
     else
       render :new
     end
@@ -41,7 +41,7 @@ class WikiController < ApplicationController
   
   def update
     if @page.update_attributes(params[:page].merge(:author => current_user))
-      redirect_to(wiki_path(@page))
+      redirect_to(page_path(@page))
     else
       render :edit
     end
@@ -54,11 +54,11 @@ class WikiController < ApplicationController
   def destroy
     @page.destroy
     #@page.soft_delete! current_user
-    redirect_to("/wiki")
+    redirect_to(pages_path)
   end
 
   def home
-    @page = Page.find_by_name("Home") || redirect_to("/wiki/home")
+    @page = Page.find_by_name("Home") || redirect_to("/pages/home")
     @html = html_for_page(@page)
   end
   
@@ -69,7 +69,7 @@ class WikiController < ApplicationController
   end
 
   def html_for_page(page)
-    Rails.cache.fetch("/wiki/#{page.url}") do
+    Rails.cache.fetch("/pages/#{page.url}") do
       page.body_html
     end
   end

@@ -7,7 +7,6 @@ class Version < ActiveRecord::Base
   end
 
   def diff
-    #return "First"{type:"New Page", body:body} unless previous
     Differ.format = Differ::Format::HTML
     Differ.diff_by_line(body, previous ? previous.body : "").to_s
   end

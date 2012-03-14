@@ -11,20 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120313085952) do
+ActiveRecord::Schema.define(:version => 20120314201630) do
+
+  create_table "attachments", :force => true do |t|
+    t.integer  "page_id"
+    t.string   "content_file_name"
+    t.string   "content_content_type"
+    t.integer  "content_file_size"
+    t.datetime "content_updated_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
 
   create_table "pages", :force => true do |t|
-    t.string   "name"
-    t.string   "url"
-    t.text     "body_html"
-    t.string   "page_class"
-    t.datetime "deleted_at"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
-    t.string   "thumbnail_file_name"
-    t.string   "thumbnail_content_type"
-    t.integer  "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
+    t.string    "name"
+    t.string    "url"
+    t.text      "body_html"
+    t.string    "page_class"
+    t.timestamp "deleted_at"
+    t.timestamp "created_at",             :null => false
+    t.timestamp "updated_at",             :null => false
+    t.string    "thumbnail_file_name"
+    t.string    "thumbnail_content_type"
+    t.integer   "thumbnail_file_size"
+    t.timestamp "thumbnail_updated_at"
   end
 
   create_table "pages_tags", :id => false, :force => true do |t|
@@ -33,31 +43,31 @@ ActiveRecord::Schema.define(:version => 20120313085952) do
   end
 
   create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "name"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "provider"
-    t.string   "uid"
-    t.boolean  "editor"
-    t.boolean  "admin"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string    "name"
+    t.string    "email"
+    t.string    "provider"
+    t.string    "uid"
+    t.boolean   "editor"
+    t.boolean   "admin"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "versions", :force => true do |t|
-    t.integer  "version"
-    t.integer  "versionable_id"
-    t.string   "versionable_type"
-    t.integer  "author_id"
-    t.text     "body"
-    t.boolean  "deletion"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "version"
+    t.integer   "versionable_id"
+    t.string    "versionable_type"
+    t.integer   "author_id"
+    t.text      "body"
+    t.boolean   "deletion"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
 end

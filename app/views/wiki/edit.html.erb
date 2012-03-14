@@ -1,9 +1,0 @@
-<% page title:"Edit #{@page.name}", class:"form edit-wiki-page" %>
-
-<% subtitle button_to("Delete", wiki_path(@page), method:"delete", confirm:"Are you sure you want to delete this page?", class:"btn-danger", icon:"remove") if can_edit? %>
-<%# subtitle link_to("see old versions", wiki_versions_path(@page)) %>
-        
-<%= form_for @page, url:wiki_path(@page), html:{multipart:true} do |f| %>
-  <%= render_errors @page %>
-  <%= render partial:"form", locals:{f:f} %>
-<% end %>

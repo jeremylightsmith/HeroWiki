@@ -7,3 +7,8 @@
 <div class="page-content">
 <%= raw @html %>
 </div>
+
+<div class="page-attachments">
+  <%= form_for [@page, @page.attachments.build] do |f| %>
+  <% end %>
+</div>

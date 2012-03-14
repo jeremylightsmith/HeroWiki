@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_user, :can_admin?, :can_edit?
+  helper_method :current_user, :can_admin?, :can_edit?, :page_path
 
   protected 
 
@@ -47,5 +47,9 @@ class ApplicationController < ActionController::Base
 
   def current_user=(user)
     session[:user_id] = user ? user.id : nil
+  end
+
+  def page_path(page)
+    "/#{page.url}"
   end
 end

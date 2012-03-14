@@ -22,7 +22,7 @@
       <div class="nav-collapse">
         <ul class="nav">
           <%= nav_link "Home", "/" %>
-          <%= nav_link "Pages", "/wiki" %>
+          <%= nav_link "Pages", pages_path %>
           <%= nav_link "About", "/about" %>
           <%= nav_link "Tags", tags_path if can_edit? %>
           <%= nav_link "Users", admin_users_path if can_admin? %>

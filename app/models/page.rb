@@ -22,6 +22,7 @@ class Page < ActiveRecord::Base
                       }, 
                       default_url:"/assets/missing_:style.png"
                     )
+  has_many :attachments
 
   def initialize(*args)
     super
