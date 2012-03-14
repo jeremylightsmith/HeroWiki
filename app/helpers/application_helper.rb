@@ -29,7 +29,7 @@ module ApplicationHelper
   end
 
   def button_to(name, url, options = {})
-    options[:class] = [options[:class], "btn"].compact.join(" ")
+    options[:class] = [options[:class], "btn", "btn-mini"].compact.join(" ")
     icon = if options[:icon]
              "<i class='icon-#{options.delete(:icon)}'></i>"
            end

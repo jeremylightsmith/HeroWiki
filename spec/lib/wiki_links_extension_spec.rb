@@ -15,6 +15,10 @@ describe WikiLinksExtension do
     HTML
   end
 
+  it "should catch weird names" do
+    RedCloth.new("[a_-+ s]").to_html(:textile, :refs_wiki_links).should include("wiki-link'>[a_-+ s?]</")
+  end
+
   it "should show a missing wiki name for a page that doesn't exist" do
     RedCloth.new("some [Missing] stuff").to_html(:textile, :refs_wiki_links).should == <<-HTML.chomp
 <p>some <a href='/wiki/new?page[name]=Missing' class='missing-wiki-link'>[Missing?]</a> stuff</p>

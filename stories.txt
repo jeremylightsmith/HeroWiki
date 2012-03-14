@@ -1,13 +1,10 @@
 == IN PROGRESS
 
-should be able to have - in a name
+as an editor, I want a textile reference so I know how to edit pages
 
 
 == BACKLOG
 
-as an editor, I want a textile reference so I know how to edit pages
-as an administrator, I want to invite people in batch, so that I can invite the whole HSD community (with a code over email?)
-as a future editor, I want to request access, so I can edit the site
 as an editor, I want to leave a comment
 as jeremy, I want everyone to be able to manage every change they might want, so that I don't have to
 
@@ -18,6 +15,7 @@ as an editor, I want to login with something other than google / yahoo (hotmail 
 
 == DONE
 
+as an administrator, I want to invite people in batch, so that I can invite the whole HSD community (with a code over email?)
 as an hsd alum, I want to see all the hsd models & methods up there, so that I can be awesome
 as a mobile user, I want the phone to responsively shrink to my iphone size, so that I can be awesome on the go
 as a browser, I want to see a wall of pictures for the models

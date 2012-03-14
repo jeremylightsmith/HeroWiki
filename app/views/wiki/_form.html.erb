@@ -6,16 +6,16 @@
 </div>
 
 <div>
+  <span class="help-inline pull-right">Learn how to format this page by looking at <%= link_to "textile documentation", "http://www.textism.com/tools/textile/", target:"_blank" %></span>
   <%= f.label :body %>
   <%= f.text_area :body, tabindex:2, rows:20, class:"span12" %>
 </div>
 <br/>
 
 <div>
+  <span class="help-inline pull-right">Select the tags below that apply to this page or <%= link_to "add your own", tags_path %></span>
   <label>
     Tags
-    <span class="hint">Select the tags below that apply to this page</span>
-    <%= link_to "Manage Tags", tags_path %>
   </label>
 
   <div class="controls tags">
@@ -33,12 +33,16 @@
 
 <div>
   <%= f.label :thumbnail %>
+  <%= image_tag @page.thumbnail.url(:small) if @page.thumbnail? %>
   <%= f.file_field :thumbnail %>
 </div>
 <br/>
 
 <div class="form-actions">
-  <%= f.submit "Save", disable_with:'Saving...', tabindex:3, class:"btn btn-primary" %>
+  <div class="pull-right">
+    <%= link_to "Cancel", wiki_path(@page), class:"btn" %>
+    <%= f.submit "Save", disable_with:'Saving...', tabindex:3, class:"btn btn-primary" %>
+  </div>
 </div>
 
 <script type="text/javascript" charset="utf-8">

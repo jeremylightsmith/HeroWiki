@@ -7,7 +7,7 @@ module WikiLinksExtension
   end
   
   def refs_wiki_links(text)
-    text.gsub!(/\[([A-Z a-z0-9_]+)\]/) do |m|
+    text.gsub!(/\[([A-Za-z0-9 _+-]+)\]/) do |m|
       name = $1
       if url = page_url_for_name(name)
         "<a href='/#{url}' class='wiki-link'>[#{name}]</a>"

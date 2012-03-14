@@ -30,7 +30,7 @@
         <ul class="nav pull-right">
           <% if current_user %>
             <%= nav_link gravatar_for(current_user, size:30) + " " + current_user.name, 
-                         current_user.url %>
+                         "/#{current_user.url}" %>
             <%= nav_link "Sign Out", sign_out_path %>
           <% else %>
             <%= nav_link "Sign In", sign_in_path %>

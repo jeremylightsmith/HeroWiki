@@ -19,8 +19,8 @@
       <td><%= "X" if user.editor? %></td>
       <td><%= "X" if user.admin? %></td>
       <td>
-        <%= link_to "[x]", admin_user_path(user), method:"delete",
-                    confirm:"Are you sure you want to delete #{name}" %>
+        <%= button_to("Delete", admin_user_path(user), icon:"remove", method:"delete",
+                    confirm:"Are you sure you want to delete #{name}") %>
       </td>
     </tr>
   <% end %>
