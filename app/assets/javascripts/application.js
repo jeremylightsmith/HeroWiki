@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$(function () {
+  $(".lookup-authenticity-token").each(function() {
+    $(this).val($("meta[name='csrf-token']").attr("content"));
+  })
+});

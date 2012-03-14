@@ -73,4 +73,6 @@ Hsd::Application.configure do
       :secret_access_key => ENV["S3_SECRET"]
     }
   }
+
+  UNLOCK_PASSWORD = ENV["UNLOCK_PASSWORD"]
 end

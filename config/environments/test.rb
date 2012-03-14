@@ -36,4 +36,5 @@ Hsd::Application.configure do
   config.active_support.deprecation = :stderr
 
   STORAGE_OPTIONS = {}
+  UNLOCK_PASSWORD = "food and stuff"
 end
