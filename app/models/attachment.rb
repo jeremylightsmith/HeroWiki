@@ -13,9 +13,19 @@ class Attachment < ActiveRecord::Base
                     )
   before_post_process :is_image?
 
-  protected
+  def url(*args)
+    content.url(*args)
+  end
+
+  def thumbnail
+    if is_image?
+      url(:small)
+    else
+      "/assets/attachment.png"
+    end
+  end
 
   def is_image?
-    ["image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/gif"].include?(self.asset_content_type) 
+    ["image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/gif"].include?(self.content_content_type) 
   end
 end

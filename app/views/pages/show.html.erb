@@ -8,7 +8,30 @@
 <%= raw @html %>
 </div>
 
-<div class="page-attachments">
-  <%= form_for [@page, @page.attachments.build] do |f| %>
+<% if @page.attachments.size > 0 %>
+  <div class="page-attachments">
+    <h4>Attachments</h4>
+    <ul class="thumbnails">
+      <% @page.attachments.each do |attachment| %>
+        <% next unless attachment.is_image? %>
+        <li class="span2">
+          <%= link_to image_tag(attachment.thumbnail), attachment.url, class:"thumbnail" %>
+        </li>
+      <% end %>
+    </ul>
+    <ul>
+      <% @page.attachments.each do |attachment| %>
+        <% next if attachment.is_image? %>
+        <li><%= link_to attachment.content_file_name, attachment.url %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if can_edit? %>
+  <%= link_to_function "Add an Attachment", "$(this).hide().next().show()" %>
+  <%= form_for [@page, @page.attachments.build], html:{multipart:true, style:"display:none;"} do |f| %>
+    <%= f.file_field :content %>
+    <%= f.submit "Upload", class:"btn btn-primary" %>
   <% end %>
-</div>
+<% end %>
