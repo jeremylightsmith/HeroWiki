@@ -1,0 +1,14 @@
+<% page title:"Attachments" %>
+
+<% subtitle link_to "Back", @page %>
+
+<table class="table">
+  <% @page.attachments.each do |attachment| %>
+    <tr>
+      <td><%= image_tag(attachment.url(:tiny), style:"height:50px") if attachment.is_image? %></td>
+      <td><%= attachment.content_file_name %></td>
+      <td><%= button_to "Delete", [@page, attachment], confirm:"Are you sure you want to delete this file?", method:"delete" %></td>
+    </tr>
+  <% end %>
+</table>
+

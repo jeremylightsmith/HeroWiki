@@ -11,18 +11,18 @@
 <% if @page.attachments.size > 0 %>
   <div class="page-attachments">
     <h4>Attachments</h4>
+    <ul>
+      <% @page.attachments.each do |attachment| %>
+        <% next if attachment.is_image? %>
+        <li><%= link_to attachment.content_file_name, attachment.url %></li>
+      <% end %>
+    </ul>
     <ul class="thumbnails">
       <% @page.attachments.each do |attachment| %>
         <% next unless attachment.is_image? %>
         <li class="span2">
           <%= link_to image_tag(attachment.thumbnail), attachment.url, class:"thumbnail" %>
         </li>
-      <% end %>
-    </ul>
-    <ul>
-      <% @page.attachments.each do |attachment| %>
-        <% next if attachment.is_image? %>
-        <li><%= link_to attachment.content_file_name, attachment.url %></li>
       <% end %>
     </ul>
   </div>

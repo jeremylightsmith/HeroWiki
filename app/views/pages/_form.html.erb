@@ -33,7 +33,7 @@
 
 <div>
   <%= f.label :thumbnail %>
-  <%= image_tag @page.thumbnail.url(:small) if @page.thumbnail? %>
+  <div><%= image_tag @page.thumbnail.url(:tiny) if @page.thumbnail? %></div>
   <%= f.file_field :thumbnail %>
 </div>
 <br/>

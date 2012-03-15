@@ -9,7 +9,7 @@ class Pages::AttachmentsController < ApplicationController
 
   def destroy
     @page.attachments.find(params[:id]).destroy
-    redirect_to @page
+    redirect_to [@page, :attachments]
   end
 
   protected

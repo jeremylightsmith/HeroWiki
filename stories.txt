@@ -8,12 +8,12 @@ as an editor, I want to leave a comment
 as jeremy, I want everyone to be able to manage every change they might want, so that I don't have to
 
 (probably not going to happen today)
-as an editor, I want to attach files to pages
 as an editor, I want to login with something other than google / yahoo (hotmail / twitter / facebook?)
 
 
 == DONE
 
+as an editor, I want to attach files to pages
 as royce, I want to track changes, so I can see what the community is doing!
 as an editor, I want a textile reference so I know how to edit pages
 as an administrator, I want to invite people in batch, so that I can invite the whole HSD community (with a code over email?)
