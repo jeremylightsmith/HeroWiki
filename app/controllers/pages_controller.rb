@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_filter :require_editor!, :except => [:show, :index]
+  before_filter :require_editor!, :except => [:home, :show, :index]
   before_filter :load_page, :except => [:show, :new, :index, :create, :home]
   before_filter :forget_all_html, :only => [:create, :destroy, :update]
   
