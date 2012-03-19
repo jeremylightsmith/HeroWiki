@@ -12,3 +12,9 @@
   <% end %>
 </table>
 
+<h3>Add an attachment</h3>
+<%= form_for [@page, @page.attachments.build], html:{multipart:true} do |f| %>
+  <%= f.file_field :content %>
+  <%= f.submit "Upload", class:"btn btn-primary" %>
+<% end %>
+
