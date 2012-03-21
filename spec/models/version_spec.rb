@@ -24,7 +24,7 @@ describe Version do
     page.body = "Hello, Bob\nGood Day"
     page.save!
 
-    page.versions.count.should == 2
+    page.versions.count.should == 1
     page.versions.first.diff.should == "<ins class=\"differ\">Hello, Bob\nGood Day</ins>"
   end
 end

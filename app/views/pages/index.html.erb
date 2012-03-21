@@ -1,27 +1,4 @@
 <% page title:'Pages' %>
 <% subtitle link_to("Add Page", new_page_path) if can_edit? %>
 
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Tags</th>
-    <th></th>
-  </tr>
-  <% @pages.each do |page| %>
-    <tr>
-      <td>
-        <%= link_to page.name, page_path(page) %> 
-      </td>
-      <td>
-        <% page.tags.each do |tag| %><%= link_to tag.name, tag, class:"label label-info" %> <% end %>
-      </td>
-      <td>
-        <% if can_edit? %>
-          <%= button_to("Edit", edit_page_path(page), icon:"pencil") %>
-          <%= button_to("Delete", page_path(page), method:"delete", confirm:"Are you sure you want to delete this page?", icon:"remove") %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-
+<%= render "page_list" %>

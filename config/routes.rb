@@ -18,6 +18,8 @@ Hsd::Application.routes.draw do
     end
   end
 
+  resource :search, :controller => :search
+
   get "/sign_in", to:"sessions#new", as:"sign_in"
   get "/sign_out", to:"sessions#destroy", as:"sign_out"
   post "/welcome", to:"sessions#unlock", as:"unlock"

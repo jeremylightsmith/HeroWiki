@@ -27,6 +27,9 @@
           <%= nav_link "Tags", tags_path if can_edit? %>
           <%= nav_link "Users", admin_users_path if can_admin? %>
           <%= nav_link "Changes", changes_path %>
+          <form class="navbar-search pull-left" action="/search">
+            <input type="text" name="q" class="search-query" placeholder="Search">
+          </form>
         </ul>
         <ul class="nav pull-right">
           <% if current_user %>

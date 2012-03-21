@@ -9,7 +9,8 @@ class Page < ActiveRecord::Base
   belongs_to :author, :class_name => "User"
   has_and_belongs_to_many :tags, order:"name"
   
-  before_save :save_version
+  before_save :check_for_version_conflicts
+  after_save :save_version
   has_many :versions, :as => :versionable
   
   has_attached_file :thumbnail, 
@@ -43,18 +44,10 @@ class Page < ActiveRecord::Base
     versions.last
   end
   
-  def body=(value)
-    @body = value
-  end
-
   def body_html
     generate_html(body)
   end
 
-  def body
-    @body || (current_version ? current_version.body : "")
-  end
-  
   def version
     @version || (current_version ? current_version.version : 0)
   end
@@ -90,17 +83,26 @@ class Page < ActiveRecord::Base
   end
     
   protected
-  
-  def save_version
-    return unless @body || deleted_at_changed?
 
+  def check_for_version_conflicts
     version_number = current_version ? current_version.version : 0
     raise(WrongVersion, "This page has been edited since you loaded it (from version #{version_number} -> #{version}), please copy your changes, refresh the page, and try applying them again") unless version_number == version
 
     self.version += 1
-    new_version = versions.build :body => @body, :author => @author, :version => version
-    new_version.deletion = true if deleted?
-    @body = nil
+  end
+  
+  def save_version
+    changes = []
+    changes << "Name Changed" if name_changed?
+    changes << "Body Changed" if body_changed?
+    changes << "Deleted" if deleted_at_changed?
+    return if changes.empty?
+
+    new_version = versions.create! :body => body, 
+      :author => @author, 
+      :version => version, 
+      :description => changes.join(", "), 
+      :deletion => deleted?
   end
   
   def generate_html(markup)
