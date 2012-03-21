@@ -15,11 +15,12 @@ class Page < ActiveRecord::Base
   has_attached_file :thumbnail, 
                     STORAGE_OPTIONS.merge(
                       styles: {
-                        tiny:"160x120#",
-                        small:"260x180#",
-                        medium:"360x268#",
-                        large:"570x416#",
+                        tiny:"160x120",
+                        small:"260x180",
+                        medium:"360x268",
+                        large:"570x416",
                       }, 
+                      processors:[:padder],
                       default_url:"/assets/missing_:style.png"
                     )
   has_many :attachments
