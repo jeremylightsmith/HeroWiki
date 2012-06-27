@@ -37,4 +37,5 @@ Hsd::Application.configure do
   #
   STORAGE_OPTIONS = {}
   UNLOCK_PASSWORD = "food and stuff"
+  FB_APP_ID = ENV["FB_APP_ID"]
 end

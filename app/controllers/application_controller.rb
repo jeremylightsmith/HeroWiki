@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  layout :app_name
+  
   protect_from_forgery
 
   helper_method :current_user, :can_admin?, :can_edit?, :page_path
@@ -51,5 +53,9 @@ class ApplicationController < ActionController::Base
 
   def page_path(page)
     "/#{page.url}"
+  end
+  
+  def app_name
+    ENV["APP_NAME"] || "hsd"
   end
 end

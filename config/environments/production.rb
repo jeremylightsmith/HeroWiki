@@ -75,4 +75,5 @@ Hsd::Application.configure do
   }
 
   UNLOCK_PASSWORD = ENV["UNLOCK_PASSWORD"]
+  FB_APP_ID = ENV["FB_APP_ID"]
 end
