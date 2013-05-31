@@ -15,6 +15,7 @@ Feel free to copy and modify one of the ones already there.
 Configure heroku something like :
 
 heroku config:add APP_NAME=mycoolapp
+heroku config:add SITE=mycoolapp.com
 heroku config:add "UNLOCK_PASSWORD:my passcode for for invited people to use"
 heroku config:add FB_APP_ID=179819392135333 # only if you want facebook comments
 

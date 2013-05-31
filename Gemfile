@@ -9,8 +9,6 @@ gem "omniauth-openid"
 #gem "omniauth-google"
 
 gem 'jquery-rails'
-#gem 'less-rails-bootstrap'
-gem 'dropbox-sdk', :require => 'dropbox_sdk'
 gem 'RedCloth', '>= 4.2.9'
 gem "will_paginate", "~> 3.0.pre2"
 gem 'airbrake'
@@ -20,12 +18,15 @@ gem "paperclip", "~> 2.3"
 gem 'aws-sdk'
 gem "differ"
 
+gem 'twitter-bootstrap-rails'
+
 group :assets do
+  gem "therubyracer"
+  gem "less-rails"
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer'
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -37,9 +38,8 @@ end
 group :development, :test do
   gem "heroku"
   gem "sqlite3"
-  gem "rspec-rails", ">= 2.6.1"
   gem "taps"
-  gem 'autotest-rails'
-  gem 'watchr'
-  gem 'spork', '> 0.9.0.rc'
+  gem "rspec-rails"
+  gem "spork"
+  gem "guard-rspec"
 end
