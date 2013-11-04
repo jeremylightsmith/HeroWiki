@@ -14,6 +14,7 @@ gem 'dropbox-sdk', :require => 'dropbox_sdk'
 gem 'RedCloth', '>= 4.2.9'
 gem "will_paginate", "~> 3.0.pre2"
 gem 'airbrake'
+gem 'memcachier'
 gem "dalli"
 gem 'thin'
 gem "paperclip", "~> 2.3"
