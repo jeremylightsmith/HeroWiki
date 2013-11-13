@@ -65,9 +65,10 @@ Hsd::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  SITE = ENV["SITE"]
   STORAGE_OPTIONS = {
     :storage => :s3,
-    :bucket => 'hsd.herokuapp.com',
+    :bucket => SITE,
     :s3_credentials => {
       :access_key_id => ENV["S3_KEY"],
       :secret_access_key => ENV["S3_SECRET"]
@@ -75,4 +76,5 @@ Hsd::Application.configure do
   }
 
   UNLOCK_PASSWORD = ENV["UNLOCK_PASSWORD"]
+  FB_APP_ID = ENV["FB_APP_ID"]
 end

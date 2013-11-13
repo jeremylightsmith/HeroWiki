@@ -39,6 +39,8 @@
 
 <hr style="clear:both"/>
 
+<% if FB_APP_ID %>
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -52,4 +54,6 @@
 <br/>
 <br/>
 <fb:comments href="<%= request.url %>" width="800px"></fb:comments>
+
+<% end %>
 

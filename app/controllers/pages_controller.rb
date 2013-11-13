@@ -58,8 +58,12 @@ class PagesController < ApplicationController
   end
 
   def home
-    @page = Page.find_by_name("Home") || redirect_to("/pages/home")
-    @html = html_for_page(@page)
+    @page = Page.find_by_name("Home")
+    if @page
+      @html = html_for_page(@page)
+    else
+      redirect_to("/pages/home")
+    end
   end
   
   protected 

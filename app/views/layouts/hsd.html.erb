@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @page_title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="fb:app_id" content="<%= FB_APP_ID %>">
+  <meta property="og:title" content="<%= @page_title %>" />
+  <meta property="og:type" content="non_profit" />
+  <meta property="og:url" content="<%= request.url %>" />
+  <meta property="og:image" content="<%= @page.thumbnail.url(:medium) if @page && @page.thumbnail? %>" />
+  <meta property="og:site_name" content="HSD" />
+
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= @page_class %>">
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="/">HSD</a>
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <%= nav_link "Home", "/" %>
+          <%= nav_link "Pages", pages_path %>
+          <%= nav_link "About", "/about" %>
+          <%= nav_link "Tags", tags_path if can_edit? %>
+          <%= nav_link "Users", admin_users_path if can_admin? %>
+          <%= nav_link "Changes", changes_path %>
+          <form class="navbar-search pull-left" action="/search">
+            <input type="text" name="q" class="search-query" placeholder="Search">
+          </form>
+        </ul>
+        <ul class="nav pull-right">
+          <% if current_user %>
+            <%= nav_link gravatar_for(current_user, size:30) + " " + current_user.name, 
+                         "/#{current_user.url}" %>
+            <%= nav_link "Sign Out", sign_out_path %>
+          <% else %>
+            <%= nav_link "Sign In", sign_in_path %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="header row">
+    <div class="span12">
+      <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+      <% if alert %><div class="alert alert-error"><%= alert %></div><% end %>
+      <h1>
+        <%= @page_title %>
+      </h1>
+      <span class="subtitle">
+        <%= raw (@page_subtitle || []).join(" ") %>
+      </span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+<footer>
+
+</footer>
+
+<%= render "shared/analytics" %>
+
+</body>
+</html>
